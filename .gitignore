@@ -1,0 +1,17 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+
+# Node / local tooling
+node_modules/
+npm-debug.log*
+
+# Local environment files
+.env
+.env.*
+
+# Temporary or generated files
+*.log
