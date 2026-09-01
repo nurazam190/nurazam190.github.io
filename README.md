@@ -37,16 +37,16 @@ http://127.0.0.1:3000/
 ## GitHub Pages deployment
 This project is already compatible with GitHub Pages because it is a static site using relative asset paths and does not require a build process.
 
-Recommended repository name:
+This repository is configured for the GitHub Pages user-site root domain:
 
 ```text
-muhammad-nurazam-portfolio
+https://nurazam190.github.io/
 ```
 
-After creating the GitHub repository and enabling GitHub Pages:
+The repository name matches the required user-site pattern:
 
 ```text
-https://<github-username>.github.io/muhammad-nurazam-portfolio/
+nurazam190.github.io
 ```
 
 ## Author
