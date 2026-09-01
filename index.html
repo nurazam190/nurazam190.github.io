@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -19,13 +19,16 @@
       theme: {
         extend: {
           colors: {
-            alabaster: '#F8F7F4',
-            charcoal: '#17202A',
-            slateNeutral: '#667085',
-            botanicalTeal: '#176B68',
-            botanicalDark: '#125552',
-            sageWash: '#E4F1EF',
-            borderSubtle: '#E4E7EC',
+            alabaster: '#F7F3EE',
+            charcoal: '#1B2430',
+            slateNeutral: '#6B7280',
+            botanicalTeal: '#1F6F68',
+            botanicalDark: '#185A55',
+            sageWash: '#DCEBE7',
+            borderSubtle: '#E8E0D7',
+            warmSand: '#D8B48A',
+            warmHighlight: '#F1E3D3',
+            cream: '#FFFDFC',
           },
           fontFamily: {
             heading: ['Manrope', 'sans-serif'],
@@ -42,19 +45,19 @@
   <!-- Custom Theme Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="bg-[#F8F7F4] text-[#17202A] font-body selection:bg-[#E4F1EF] selection:text-[#176B68]">
+<body class="bg-[#F7F3EE] text-[#1B2430] font-body selection:bg-[#DCEBE7] selection:text-[#1F6F68]">
 
   <!-- Top Sticky Navigation -->
-  <header class="sticky top-0 z-40 w-full bg-[#F8F7F4]/90 backdrop-blur-md border-b border-[#E4E7EC]/80 transition-all">
+  <header class="site-header sticky top-0 z-40 w-full bg-[#F7F3EE]/90 backdrop-blur-md border-b border-[#E8E0D7]/80 transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand / Name -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-[#176B68] text-white flex items-center justify-center font-heading font-bold text-base shadow-sm group-hover:bg-[#125552] transition-colors">
+        <div class="brand-mark w-10 h-10 rounded-xl bg-[#1F6F68] text-white flex items-center justify-center font-heading font-bold text-base group-hover:bg-[#185A55] transition-colors">
           NA
         </div>
         <div>
-          <span class="block font-heading font-bold text-base sm:text-lg text-slate-900 tracking-tight leading-none group-hover:text-[#176B68] transition-colors">
+          <span class="block font-heading font-bold text-base sm:text-lg text-slate-900 tracking-tight leading-none group-hover:text-[#1F6F68] transition-colors">
             Muhammad Nur Azam
           </span>
           <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase mt-0.5 block">
@@ -85,7 +88,7 @@
           <i data-lucide="linkedin" class="w-4 h-4 text-[#0A66C2]"></i>
         </a>
         <a href="#resume" 
-           class="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-[#176B68] bg-[#E4F1EF] border border-[#176B68]/20 hover:bg-[#D6EAE7] transition-all">
+           class="nav-resume inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-[#1F6F68] bg-[#DCEBE7] border border-[#1F6F68]/20 hover:bg-[#D0E4DF] transition-all">
           <i data-lucide="file-text" class="w-3.5 h-3.5 mr-1.5"></i>
           Resume
         </a>
@@ -118,14 +121,14 @@
         </div>
 
         <nav class="flex flex-col space-y-4 mt-6 text-base font-medium text-slate-700">
-          <a href="#about" class="mobile-nav-link hover:text-[#176B68]">About</a>
-          <a href="#journey" class="mobile-nav-link hover:text-[#176B68]">Career Journey</a>
-          <a href="#impact" class="mobile-nav-link hover:text-[#176B68]">Key Achievements</a>
-          <a href="#selected-work" class="mobile-nav-link hover:text-[#176B68]">Selected Work</a>
-          <a href="#journal" class="mobile-nav-link hover:text-[#176B68]">HR Journal</a>
-          <a href="#expertise" class="mobile-nav-link hover:text-[#176B68]">Areas of Expertise</a>
-          <a href="#resume" class="mobile-nav-link hover:text-[#176B68]">Resume</a>
-          <a href="#contact" class="mobile-nav-link hover:text-[#176B68]">Contact</a>
+          <a href="#about" class="mobile-nav-link hover:text-[#1F6F68]">About</a>
+          <a href="#journey" class="mobile-nav-link hover:text-[#1F6F68]">Career Journey</a>
+          <a href="#impact" class="mobile-nav-link hover:text-[#1F6F68]">Key Achievements</a>
+          <a href="#selected-work" class="mobile-nav-link hover:text-[#1F6F68]">Selected Work</a>
+          <a href="#journal" class="mobile-nav-link hover:text-[#1F6F68]">HR Journal</a>
+          <a href="#expertise" class="mobile-nav-link hover:text-[#1F6F68]">Areas of Expertise</a>
+          <a href="#resume" class="mobile-nav-link hover:text-[#1F6F68]">Resume</a>
+          <a href="#contact" class="mobile-nav-link hover:text-[#1F6F68]">Contact</a>
         </nav>
       </div>
 
@@ -143,19 +146,19 @@
 
   <main>
     <!-- Section 1: Hero -->
-    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div id="hero-content"></div>
     </section>
 
     <!-- Section 2: Philosophy Anchor -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
+    <section class="section-shell philosophy-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
       <div id="philosophy-content"></div>
     </section>
 
     <!-- Section 3: Career Journey -->
-    <section id="journey" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
-      <div class="max-w-2xl mb-12">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#176B68] block mb-2">Experience</span>
+    <section id="journey" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
+      <div class="section-intro max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] block mb-2">Experience</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-heading">
           Career Journey
         </h2>
@@ -167,9 +170,9 @@
     </section>
 
     <!-- Section 4: Key Career Achievements / Proof Points -->
-    <section id="impact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
-      <div class="max-w-2xl mb-12">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#176B68] block mb-2">Proven Milestones</span>
+    <section id="impact" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
+      <div class="section-intro max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] block mb-2">Proven Milestones</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-heading">
           Key Impact & Achievements
         </h2>
@@ -181,9 +184,9 @@
     </section>
 
     <!-- Section 5: Selected Work & HR Initiatives -->
-    <section id="selected-work" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
-      <div class="max-w-2xl mb-12">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#176B68] block mb-2">Initiatives</span>
+    <section id="selected-work" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
+      <div class="section-intro max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] block mb-2">Initiatives</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-heading">
           Selected Work
         </h2>
@@ -195,9 +198,9 @@
     </section>
 
     <!-- Section 6: HR Journal by Azam -->
-    <section id="journal" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
-      <div class="max-w-2xl mb-12">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#176B68] block mb-2">Thoughts & Lessons</span>
+    <section id="journal" class="section-shell journal-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
+      <div class="section-intro max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] block mb-2">Thoughts & Lessons</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-heading">
           HR Journal by Azam
         </h2>
@@ -209,9 +212,9 @@
     </section>
 
     <!-- Section 7: Core Areas of Expertise -->
-    <section id="expertise" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
-      <div class="max-w-2xl mb-12">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#176B68] block mb-2">Capabilities</span>
+    <section id="expertise" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
+      <div class="section-intro max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] block mb-2">Capabilities</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-heading">
           Core Areas of Expertise
         </h2>
@@ -223,21 +226,21 @@
     </section>
 
     <!-- Section 8: Resume & Credentials -->
-    <section id="resume" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
+    <section id="resume" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
       <div id="resume-content"></div>
     </section>
 
     <!-- Section 9: Contact & LinkedIn Ecosystem -->
-    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E4E7EC]">
+    <section id="contact" class="section-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E8E0D7]">
       <div id="contact-content"></div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-[#E4E7EC] py-12">
+  <footer class="site-footer bg-white border-t border-[#E8E0D7] py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-[#176B68] text-white flex items-center justify-center font-heading font-bold text-xs">
+        <div class="w-8 h-8 rounded-lg bg-[#1F6F68] text-white flex items-center justify-center font-heading font-bold text-xs">
           NA
         </div>
         <div>

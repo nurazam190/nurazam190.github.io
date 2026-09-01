@@ -1,4 +1,4 @@
-﻿// Main JavaScript Application for Muhammad Nur Azam's HR Portfolio
+// Main JavaScript Application for Muhammad Nur Azam's HR Portfolio
 import { PORTFOLIO_DATA } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initScrollSpy();
   initCopyEmail();
+  initRevealAnimations();
 
   // Refresh Lucide Icons if available and replace unsupported LinkedIn icons with inline SVGs
   refreshIcons();
@@ -55,22 +56,22 @@ function renderHero() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-8 pb-16 lg:pt-14 lg:pb-24">
+    <div class="hero-layout grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-8 pb-16 lg:pt-14 lg:pb-24">
       <!-- Left Column: Editorial Identity & CTAs (approx 58%) -->
-      <div class="lg:col-span-7 flex flex-col justify-center space-y-6 lg:pr-6">
+      <div class="hero-copy lg:col-span-7 flex flex-col justify-center space-y-6 lg:pr-6">
         
         <!-- Live Status Pill -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-900 text-xs font-semibold w-fit tracking-wide shadow-sm">
+        <div class="current-status inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold w-fit tracking-wide">
           <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
           <span>${hero.liveStatus}</span>
         </div>
 
         <!-- Name & Professional Descriptor -->
         <div>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.12] font-heading">
+          <h1 class="hero-name text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.12] font-heading">
             ${personal.name}
           </h1>
-          <p class="mt-2.5 text-lg sm:text-xl font-medium text-[#176B68] tracking-tight">
+          <p class="mt-2.5 text-lg sm:text-xl font-medium text-[#1F6F68] tracking-tight">
             ${personal.positioning}
           </p>
         </div>
@@ -83,14 +84,14 @@ function renderHero() {
         <!-- CTAs Group -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a href="#selected-work" 
-             class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-[#176B68] hover:bg-[#125552] transition-all shadow-sm hover:shadow active:scale-[0.98]">
+             class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-[#1F6F68] hover:bg-[#185A55] transition-all shadow-sm hover:shadow active:scale-[0.98]">
             Explore Selected Work
             <i data-lucide="arrow-down" class="w-4 h-4 ml-2"></i>
           </a>
           <a href="${personal.linkedinUrl}" 
              target="_blank" 
              rel="noopener noreferrer"
-             class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-slate-800 bg-white border border-slate-200 hover:border-[#176B68] hover:text-[#176B68] transition-all shadow-sm hover:shadow-sm active:scale-[0.98]">
+             class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-slate-800 bg-white border border-slate-200 hover:border-[#1F6F68] hover:text-[#1F6F68] transition-all shadow-sm hover:shadow-sm active:scale-[0.98]">
             <i data-lucide="linkedin" class="w-4 h-4 mr-2 text-[#0A66C2]"></i>
             Connect on LinkedIn
             <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1.5 opacity-70"></i>
@@ -106,7 +107,7 @@ function renderHero() {
         <div class="pt-6 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
           ${hero.heroProofPoints.map(point => `
             <div class="flex items-start gap-3">
-              <div class="p-1.5 rounded-lg bg-[#E4F1EF] text-[#176B68] shrink-0 mt-0.5">
+              <div class="p-1.5 rounded-lg bg-[#DCEBE7] text-[#1F6F68] shrink-0 mt-0.5">
                 <i data-lucide="check" class="w-4 h-4"></i>
               </div>
               <div>
@@ -120,8 +121,8 @@ function renderHero() {
       </div>
 
       <!-- Right Column: Professional Portrait (approx 42%) -->
-      <div class="lg:col-span-5 flex justify-center lg:justify-end">
-        <div class="w-full max-w-md lg:max-w-none">
+      <div class="hero-portrait-column lg:col-span-5 flex justify-center lg:justify-end">
+        <div class="hero-portrait-shell w-full max-w-md lg:max-w-none">
           <div class="portrait-container aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] relative bg-[#EAE8E3]">
             <img src="${personal.portrait}" 
                  alt="${personal.portraitAlt}" 
@@ -131,7 +132,7 @@ function renderHero() {
           </div>
           <div class="mt-3 flex items-center justify-between text-xs text-slate-500 px-1">
             <span>Human Resources Professional</span>
-            <span class="inline-flex items-center gap-1 font-medium text-[#176B68]">
+            <span class="inline-flex items-center gap-1 font-medium text-[#1F6F68]">
               <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ${personal.location}
             </span>
           </div>
@@ -153,10 +154,10 @@ function renderPhilosophy() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="rounded-3xl bg-[#E4F1EF]/60 border border-[#176B68]/15 p-8 sm:p-12 lg:p-14 relative overflow-hidden">
+    <div class="philosophy-panel rounded-3xl p-8 sm:p-12 lg:p-14 relative overflow-hidden">
       <!-- Quote block -->
       <div class="max-w-3xl mx-auto text-center space-y-4">
-        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#176B68] bg-white/80 px-3.5 py-1 rounded-full border border-[#176B68]/20">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#1F6F68] bg-white/80 px-3.5 py-1 rounded-full border border-[#1F6F68]/20">
           Core HR Philosophy
         </span>
         <blockquote class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-900 leading-snug tracking-tight font-heading">
@@ -165,11 +166,11 @@ function renderPhilosophy() {
       </div>
 
       <!-- 3 Guiding Pillars -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-10 border-t border-[#176B68]/15">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-10 border-t border-[#1F6F68]/15">
         ${philosophy.principles.map((p, idx) => `
-          <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm flex flex-col justify-between">
+          <div class="philosophy-card p-6 flex flex-col justify-between">
             <div>
-              <div class="w-8 h-8 rounded-lg bg-[#E4F1EF] text-[#176B68] flex items-center justify-center font-bold text-xs mb-3">
+              <div class="w-8 h-8 rounded-lg bg-[#DCEBE7] text-[#1F6F68] flex items-center justify-center font-bold text-xs mb-3">
                 0${idx + 1}
               </div>
               <h3 class="text-base font-bold text-slate-900 mb-2 font-heading">${p.title}</h3>
@@ -189,16 +190,16 @@ function renderCareerJourney() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="space-y-8">
+    <div class="journey-timeline space-y-8">
       ${careerJourney.map(job => `
-        <div class="editorial-card p-6 sm:p-8 lg:p-10 ${job.isCurrent ? 'ring-1 ring-[#176B68]/20' : ''}">
+        <div class="journey-entry editorial-card p-6 sm:p-8 lg:p-10 ${job.isCurrent ? 'is-current' : ''}">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
             <div>
               <div class="flex flex-wrap items-center gap-2.5 mb-1.5">
                 <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-heading">${job.company}</h3>
                 <span class="tag-pill">${job.badge}</span>
               </div>
-              <p class="text-base font-semibold text-[#176B68]">${job.role}</p>
+              <p class="text-base font-semibold text-[#1F6F68]">${job.role}</p>
             </div>
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold w-fit">
               <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-500"></i>
@@ -212,7 +213,7 @@ function renderCareerJourney() {
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
               ${job.responsibilities.map(r => `
                 <li class="flex items-start gap-2.5 text-sm text-slate-600">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#176B68] shrink-0 mt-2"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#1F6F68] shrink-0 mt-2"></span>
                   <span>${r}</span>
                 </li>
               `).join('')}
@@ -231,11 +232,11 @@ function renderAchievements() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="impact-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       ${achievements.map(item => `
-        <div class="editorial-card p-6 flex flex-col justify-between">
+        <div class="impact-item editorial-card p-6 flex flex-col justify-between">
           <div>
-            <div class="inline-block px-3 py-1 rounded-md bg-[#E4F1EF] text-[#176B68] text-xs font-bold mb-4">
+            <div class="impact-metric inline-block px-3 py-1 text-xs font-bold mb-4">
               ${item.metric}
             </div>
             <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 font-heading">
@@ -258,15 +259,15 @@ function renderSelectedWork() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="work-list grid grid-cols-1 gap-0">
       ${selectedWork.map(item => `
-        <div class="editorial-card p-6 sm:p-8 flex flex-col justify-between group">
+        <article class="case-study-module p-6 sm:p-8 lg:p-10 group">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
               <span class="tag-pill">${item.category}</span>
               <span class="text-xs font-mono font-bold text-slate-400">INITIATIVE ${item.number}</span>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#176B68] transition-colors mb-3 font-heading">
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#1F6F68] transition-colors mb-3 font-heading">
               ${item.title}
             </h3>
             <p class="text-sm text-slate-600 mb-6 leading-relaxed">
@@ -274,24 +275,30 @@ function renderSelectedWork() {
             </p>
 
             <!-- Compact CAR Overview -->
-            <div class="space-y-3 bg-slate-50/80 p-4 rounded-xl border border-slate-100 mb-6">
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-0.5">Context</span>
-                <p class="text-xs text-slate-700">${item.context}</p>
+            <div class="case-study-grid mb-7">
+              <div class="case-study-detail">
+                <span class="case-study-label">Context</span>
+                <p>${item.context}</p>
               </div>
-              <div class="pt-2 border-t border-slate-200/60">
-                <span class="text-xs font-bold uppercase tracking-wider text-[#176B68] block mb-0.5">Outcome</span>
-                <p class="text-xs text-slate-800 font-medium">${item.outcome}</p>
+              <div class="case-study-detail">
+                <span class="case-study-label">Contribution</span>
+                <ul>
+                  ${item.contribution.map(contribution => `<li>${contribution}</li>`).join('')}
+                </ul>
+              </div>
+              <div class="case-study-detail case-study-outcome">
+                <span class="case-study-label">Outcome</span>
+                <p>${item.outcome}</p>
               </div>
             </div>
           </div>
 
-          <button class="open-case-btn inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-sm font-semibold text-[#176B68] hover:text-[#125552] transition-colors"
+          <button class="open-case-btn inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-sm font-semibold text-[#1F6F68] hover:text-[#185A55] transition-colors"
                   data-case-id="${item.id}">
             <span>View Complete Breakdown</span>
             <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
           </button>
-        </div>
+        </article>
       `).join('')}
     </div>
   `;
@@ -312,18 +319,18 @@ function renderHRJournal() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="journal-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
       ${hrJournal.entries.map(entry => `
-        <article class="editorial-card p-6 sm:p-7 flex flex-col justify-between group">
+        <article class="journal-entry p-6 sm:p-7 flex flex-col justify-between group">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-mono font-bold text-[#176B68] bg-[#E4F1EF] px-2.5 py-1 rounded-md">
+              <span class="text-xs font-mono font-bold text-[#1F6F68] bg-[#DCEBE7] px-2.5 py-1 rounded-md">
                 ${entry.number}
               </span>
               <span class="text-xs text-slate-400 font-medium">HR Reflection</span>
             </div>
             
-            <h3 class="text-lg font-bold text-slate-900 group-hover:text-[#176B68] transition-colors leading-snug mb-3 font-heading">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-[#1F6F68] transition-colors leading-snug mb-3 font-heading">
               ${entry.title}
             </h3>
             
@@ -335,7 +342,7 @@ function renderHRJournal() {
           <a href="${entry.linkedinUrl}" 
              target="_blank" 
              rel="noopener noreferrer"
-             class="inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-bold text-[#176B68] hover:text-[#125552] transition-colors">
+             class="inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-bold text-[#1F6F68] hover:text-[#185A55] transition-colors">
             <span class="inline-flex items-center gap-1.5">
               <i data-lucide="linkedin" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
               Read & Discuss on LinkedIn
@@ -355,19 +362,19 @@ function renderExpertise() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="expertise-grid grid grid-cols-1 md:grid-cols-2 gap-0">
       ${expertise.map(domain => `
-        <div class="editorial-card p-6 sm:p-8">
+        <div class="expertise-column p-6 sm:p-8">
           <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
             <h3 class="text-lg font-bold text-slate-900 font-heading">${domain.domain}</h3>
-            <span class="text-xs font-semibold text-[#176B68] bg-[#E4F1EF] px-2.5 py-0.5 rounded-full">
+            <span class="text-xs font-semibold text-[#1F6F68] bg-[#DCEBE7] px-2.5 py-0.5 rounded-full">
               ${domain.badge}
             </span>
           </div>
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             ${domain.skills.map(skill => `
               <li class="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#176B68] shrink-0"></i>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#1F6F68] shrink-0"></i>
                 <span>${skill}</span>
               </li>
             `).join('')}
@@ -385,7 +392,7 @@ function renderResumeSection() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="editorial-card p-8 sm:p-12 lg:p-14 bg-white border border-slate-200">
+    <div class="resume-panel editorial-card p-8 sm:p-12 lg:p-14 bg-white border border-slate-200">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <div class="lg:col-span-8 space-y-4">
@@ -397,7 +404,7 @@ function renderResumeSection() {
           <div class="space-y-2 pt-2">
             ${resume.highlights.map(h => `
               <div class="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700">
-                <i data-lucide="badge-check" class="w-4 h-4 text-[#176B68] shrink-0"></i>
+                <i data-lucide="badge-check" class="w-4 h-4 text-[#1F6F68] shrink-0"></i>
                 <span>${h}</span>
               </div>
             `).join('')}
@@ -406,12 +413,12 @@ function renderResumeSection() {
 
         <div class="lg:col-span-4 flex flex-col gap-3">
           <button id="download-resume-btn" 
-                  class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-[#176B68] hover:bg-[#125552] transition-all shadow-sm active:scale-[0.98]">
+                  class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-[#1F6F68] hover:bg-[#185A55] transition-all shadow-sm active:scale-[0.98]">
             <i data-lucide="download" class="w-4 h-4 mr-2"></i>
             Download Resume (PDF)
           </button>
           <button id="view-resume-btn" 
-                  class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-slate-800 bg-slate-50 border border-slate-200 hover:border-[#176B68] hover:text-[#176B68] transition-all active:scale-[0.98]">
+                  class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-slate-800 bg-slate-50 border border-slate-200 hover:border-[#1F6F68] hover:text-[#1F6F68] transition-all active:scale-[0.98]">
             <i data-lucide="eye" class="w-4 h-4 mr-2"></i>
             View Career Summary
           </button>
@@ -432,9 +439,9 @@ function renderContactSection() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="rounded-3xl bg-[#17202A] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden">
+    <div class="contact-panel rounded-3xl bg-[#1B2430] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden">
       <div class="max-w-3xl space-y-6">
-        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#E4F1EF] bg-white/10 px-3.5 py-1 rounded-full border border-white/15">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#DCEBE7] bg-white/10 px-3.5 py-1 rounded-full border border-white/15">
           Connect & Inquiries
         </span>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-heading">
@@ -460,7 +467,7 @@ function renderContactSection() {
                 Copy Address
               </button>
               <a href="mailto:${personal.email}" 
-                 class="inline-flex items-center px-4 py-2 rounded-lg bg-[#176B68] hover:bg-[#125552] text-xs font-bold text-white transition-colors">
+                 class="inline-flex items-center px-4 py-2 rounded-lg bg-[#1F6F68] hover:bg-[#185A55] text-xs font-bold text-white transition-colors">
                 Send Email
               </a>
             </div>
@@ -536,7 +543,7 @@ function openCaseStudyModal(caseId) {
         <ul class="space-y-2">
           ${item.contribution.map(c => `
             <li class="flex items-start gap-2 text-sm text-slate-700">
-              <i data-lucide="check" class="w-4 h-4 text-[#176B68] shrink-0 mt-0.5"></i>
+              <i data-lucide="check" class="w-4 h-4 text-[#1F6F68] shrink-0 mt-0.5"></i>
               <span>${c}</span>
             </li>
           `).join('')}
@@ -544,8 +551,8 @@ function openCaseStudyModal(caseId) {
       </div>
 
       <!-- Outcome -->
-      <div class="bg-[#E4F1EF]/60 p-4 rounded-xl border border-[#176B68]/20">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-[#176B68] mb-1">Outcome & Contribution</h3>
+      <div class="bg-[#DCEBE7]/60 p-4 rounded-xl border border-[#1F6F68]/20">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] mb-1">Outcome & Contribution</h3>
         <p class="text-sm text-slate-900 font-medium">${item.outcome}</p>
       </div>
     </div>
@@ -568,7 +575,7 @@ function openResumeSummaryModal() {
       <div class="border-b border-slate-100 pb-4 pr-12">
         <span class="tag-pill mb-2">Verified Professional Summary</span>
         <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">${personal.name}</h2>
-        <p class="text-sm font-semibold text-[#176B68] mt-1">${personal.positioning}</p>
+        <p class="text-sm font-semibold text-[#1F6F68] mt-1">${personal.positioning}</p>
         <p class="text-xs text-slate-500 mt-1">${personal.email} • ${personal.company}</p>
       </div>
 
@@ -582,7 +589,7 @@ function openResumeSummaryModal() {
                 <span class="font-bold text-slate-900 text-sm font-heading">${j.company}</span>
                 <span class="text-xs text-slate-500 font-mono">${j.period}</span>
               </div>
-              <p class="text-xs font-semibold text-[#176B68] mb-2">${j.role}</p>
+              <p class="text-xs font-semibold text-[#1F6F68] mb-2">${j.role}</p>
               <p class="text-xs text-slate-600">${j.summary}</p>
             </div>
           `).join('')}
@@ -595,7 +602,7 @@ function openResumeSummaryModal() {
         <ul class="space-y-1.5 text-xs text-slate-700">
           ${achievements.map(a => `
             <li class="flex items-start gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#176B68] shrink-0 mt-1.5"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#1F6F68] shrink-0 mt-1.5"></span>
               <span><strong>${a.metric}:</strong> ${a.title} — ${a.description}</span>
             </li>
           `).join('')}
@@ -603,7 +610,7 @@ function openResumeSummaryModal() {
       </div>
 
       <div class="pt-2 flex justify-end">
-        <button id="modal-download-fallback" class="px-5 py-2.5 rounded-xl bg-[#176B68] text-white text-xs font-bold hover:bg-[#125552] transition-colors">
+        <button id="modal-download-fallback" class="px-5 py-2.5 rounded-xl bg-[#1F6F68] text-white text-xs font-bold hover:bg-[#185A55] transition-colors">
           Download PDF
         </button>
       </div>
@@ -733,4 +740,29 @@ function initScrollSpy() {
       }
     });
   }, { passive: true });
+}
+
+// Subtle, dependency-free reveal transitions with reduced-motion support.
+function initRevealAnimations() {
+  const targets = document.querySelectorAll(
+    '.section-intro, .philosophy-panel, .journey-entry, .impact-item, .case-study-module, .journal-entry, .expertise-column, .resume-panel, .contact-panel'
+  );
+
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    targets.forEach(target => target.classList.add('is-visible'));
+    return;
+  }
+
+  targets.forEach(target => target.classList.add('reveal-target'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px' });
+
+  targets.forEach(target => observer.observe(target));
 }
