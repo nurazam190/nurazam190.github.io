@@ -270,8 +270,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   overflow: clip;
 }
 
-#about::before,
-#about::after,
 #impact::before,
 .contact-panel::before {
   content: '';
@@ -286,32 +284,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .contact-panel > * {
   position: relative;
   z-index: 1;
-}
-
-#about::before {
-  width: 32rem;
-  height: 24rem;
-  top: 7rem;
-  right: -5rem;
-  border-radius: 52% 48% 44% 56% / 46% 58% 42% 54%;
-  background-color: var(--accent-primary);
-  filter: blur(76px);
-  opacity: 0.1;
-  animation: editorialFloatTeal 26s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-#about::after {
-  width: 23rem;
-  height: 17rem;
-  right: 25%;
-  bottom: 2rem;
-  border-radius: 46% 54% 57% 43% / 58% 44% 56% 42%;
-  background-color: var(--sand);
-  filter: blur(72px);
-  opacity: 0.11;
-  animation: editorialFloatSand 32s ease-in-out infinite alternate;
-  will-change: transform;
 }
 
 #journey,
@@ -379,7 +351,57 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Hero: editorial cover treatment */
 .hero-layout {
+  position: relative;
+  isolation: isolate;
   min-height: calc(100vh - 5rem);
+}
+
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-ambient {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.hero-ambient--teal {
+  width: clamp(26.25rem, 42vw, 37.5rem);
+  height: clamp(26.25rem, 42vw, 37.5rem);
+  top: 1%;
+  right: -5%;
+  background-color: #DCEBE7;
+  filter: blur(70px);
+  opacity: 0.28;
+  animation: heroTealFloat 22s ease-in-out infinite alternate;
+}
+
+.hero-ambient--sand {
+  width: clamp(21.875rem, 35vw, 31.25rem);
+  height: clamp(21.875rem, 35vw, 31.25rem);
+  left: -11%;
+  bottom: -7%;
+  background-color: #F1E3D3;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: heroSandDrift 28s ease-in-out infinite alternate;
+}
+
+.hero-ambient--accent {
+  width: 4.25rem;
+  height: 4.25rem;
+  top: 19%;
+  left: 51%;
+  background-color: #D8B48A;
+  filter: blur(2px);
+  opacity: 0.24;
+  animation: heroAccentDrift 18s ease-in-out infinite alternate;
 }
 
 .hero-copy {
@@ -450,6 +472,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 .hero-portrait-column {
   position: relative;
+  z-index: 2;
 }
 
 .hero-portrait-shell {
@@ -881,21 +904,30 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transform: translateY(0);
 }
 
-@keyframes editorialFloatTeal {
+@keyframes heroTealFloat {
   from {
-    transform: translate3d(-1.25rem, -0.4rem, 0) scale(0.96) rotate(-2deg);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   to {
-    transform: translate3d(1.5rem, 1rem, 0) scale(1.04) rotate(2deg);
+    transform: translate3d(35px, -25px, 0) scale(1.06) rotate(2deg);
   }
 }
 
-@keyframes editorialFloatSand {
+@keyframes heroSandDrift {
   from {
-    transform: translate3d(0.75rem, 0.5rem, 0) scale(1) rotate(1deg);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   to {
-    transform: translate3d(-1.5rem, -0.75rem, 0) scale(1.05) rotate(-2deg);
+    transform: translate3d(-32px, -22px, 0) scale(1.05) rotate(-2deg);
+  }
+}
+
+@keyframes heroAccentDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+  }
+  to {
+    transform: translate3d(8px, -30px, 0) scale(1.04) rotate(6deg);
   }
 }
 
@@ -919,17 +951,30 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 @media (max-width: 767px) {
-  #about::before {
-    width: 18rem;
-    height: 15rem;
-    top: 44%;
-    right: -9rem;
-    filter: blur(54px);
-    opacity: 0.08;
+  .hero-ambient--teal {
+    width: 23rem;
+    height: 23rem;
+    top: 46%;
+    right: -11rem;
+    filter: blur(60px);
+    opacity: 0.22;
   }
 
-  #about::after {
-    display: none;
+  .hero-ambient--sand {
+    width: 20rem;
+    height: 20rem;
+    left: -11rem;
+    bottom: 12%;
+    filter: blur(66px);
+    opacity: 0.23;
+  }
+
+  .hero-ambient--accent {
+    width: 2.75rem;
+    height: 2.75rem;
+    top: 40%;
+    left: 8%;
+    opacity: 0.18;
   }
 
   #impact::before {
@@ -1059,8 +1104,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     transform: none;
   }
 
-  #about::before,
-  #about::after,
+  .hero-ambient,
   .contact-panel::before {
     animation: none !important;
     transform: none !important;

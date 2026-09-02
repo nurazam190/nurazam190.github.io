@@ -57,6 +57,12 @@ function renderHero() {
 
   container.innerHTML = `
     <div class="hero-layout grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-8 pb-16 lg:pt-14 lg:pb-24">
+      <div class="hero-atmosphere" aria-hidden="true">
+        <span class="hero-ambient hero-ambient--teal"></span>
+        <span class="hero-ambient hero-ambient--sand"></span>
+        <span class="hero-ambient hero-ambient--accent"></span>
+      </div>
+
       <!-- Left Column: Editorial Identity & CTAs (approx 58%) -->
       <div class="hero-copy lg:col-span-7 flex flex-col justify-center space-y-6 lg:pr-6">
         
