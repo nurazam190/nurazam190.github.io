@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModals();
   initMobileMenu();
   initScrollSpy();
-  initCopyEmail();
+  initContactCopy();
   initRevealAnimations();
 
   // Refresh Lucide Icons if available and replace unsupported LinkedIn icons with inline SVGs
@@ -446,58 +446,81 @@ function renderContactSection() {
 
   container.innerHTML = `
     <div class="contact-panel rounded-3xl bg-[#1B2430] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden">
-      <div class="max-w-3xl space-y-6">
-        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#DCEBE7] bg-white/10 px-3.5 py-1 rounded-full border border-white/15">
-          Connect & Inquiries
-        </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-heading">
-          Let’s discuss human-centered HR and professional opportunities.
-        </h2>
-        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
-          Open to connecting with HR leaders, recruiters, and professionals across the talent ecosystem.
-        </p>
-
-        <!-- Interactive Contact Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-          
-          <!-- Email Card -->
-          <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex flex-col justify-between space-y-4 hover:border-white/25 transition-colors">
-            <div>
-              <span class="text-xs text-slate-400 font-medium uppercase tracking-wider block mb-1">Direct Email</span>
-              <p class="text-base font-mono text-white font-semibold break-all">${personal.email}</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button id="copy-email-btn" 
-                      class="inline-flex items-center px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-white transition-colors">
-                <i data-lucide="copy" class="w-3.5 h-3.5 mr-1.5"></i>
-                Copy Address
-              </button>
-              <a href="mailto:${personal.email}" 
-                 class="inline-flex items-center px-4 py-2 rounded-lg bg-[#1F6F68] hover:bg-[#185A55] text-xs font-bold text-white transition-colors">
-                Send Email
-              </a>
-            </div>
-          </div>
-
-          <!-- LinkedIn Card -->
-          <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex flex-col justify-between space-y-4 hover:border-white/25 transition-colors">
-            <div>
-              <span class="text-xs text-slate-400 font-medium uppercase tracking-wider block mb-1">LinkedIn Profile</span>
-              <p class="text-sm text-slate-200 line-clamp-2">${personal.linkedinHeadline}</p>
-            </div>
-            <div>
-              <a href="${personal.linkedinUrl}" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#0A66C2] hover:bg-[#084e96] text-xs font-bold text-white transition-colors">
-                <i data-lucide="linkedin" class="w-3.5 h-3.5 mr-1.5"></i>
-                View Profile on LinkedIn ↗
-              </a>
-            </div>
-          </div>
-
+      <div class="contact-inner">
+        <div class="contact-intro max-w-5xl space-y-6">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#DCEBE7] bg-white/10 px-3.5 py-1 rounded-full border border-white/15">
+            Connect & Inquiries
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-heading">
+            Let’s discuss human-centered HR and<br class="hidden sm:block" /> professional opportunities.
+          </h2>
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+            Open to connecting with HR leaders, recruiters, and professionals across the talent ecosystem.
+          </p>
         </div>
 
+        <div class="contact-layout">
+          <section class="contact-directory" aria-labelledby="contact-directory-title">
+            <div class="contact-directory__heading">
+              <h3 id="contact-directory-title">Contact Directory</h3>
+            </div>
+
+            <div class="contact-directory__row">
+              <span class="contact-directory__label">Email</span>
+              <a class="contact-directory__value" href="mailto:${personal.email}">${personal.email}</a>
+              <div class="contact-directory__actions">
+                <button type="button" class="contact-action" data-copy-contact="email" aria-label="Copy email address">
+                  <span data-copy-label aria-live="polite">Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-directory__row">
+              <span class="contact-directory__label">Phone</span>
+              <a class="contact-directory__value" href="tel:${personal.phone}">${personal.phone}</a>
+              <div class="contact-directory__actions">
+                <a class="contact-action" href="tel:${personal.phone}" aria-label="Call ${personal.phone}">Call</a>
+                <button type="button" class="contact-action" data-copy-contact="phone" aria-label="Copy phone number">
+                  <span data-copy-label aria-live="polite">Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-directory__row">
+              <span class="contact-directory__label">Portfolio</span>
+              <a class="contact-directory__value" href="${personal.portfolioUrl}" target="_blank" rel="noopener noreferrer">
+                ${personal.portfolioDisplay}
+              </a>
+              <div class="contact-directory__actions">
+                <a class="contact-action" href="${personal.portfolioUrl}" target="_blank" rel="noopener noreferrer" aria-label="Visit portfolio website">
+                  Visit ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-directory__row contact-directory__row--location">
+              <span class="contact-directory__label">Location</span>
+              <span class="contact-directory__value">${personal.contactLocation.city}</span>
+              <div class="contact-directory__actions contact-directory__country">
+                ${personal.contactLocation.country}
+              </div>
+            </div>
+          </section>
+
+          <aside class="contact-linkedin-card" aria-label="LinkedIn profile">
+            <div>
+              <span class="contact-linkedin-card__label">LinkedIn Profile</span>
+              <p class="contact-linkedin-card__headline">${personal.linkedinHeadline}</p>
+            </div>
+            <a href="${personal.linkedinUrl}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="contact-linkedin-card__cta">
+              <i data-lucide="linkedin" class="w-4 h-4" aria-hidden="true"></i>
+              <span>View Profile on LinkedIn ↗</span>
+            </a>
+          </aside>
+        </div>
       </div>
     </div>
   `;
@@ -656,17 +679,40 @@ function showResumePlaceholderNotice() {
   showToast('📄 Resume PDF placeholder active. Complete on-page career summary is available below.');
 }
 
-// Email Copy Action with Toast
-function initCopyEmail() {
+// Contact directory copy actions reuse the shared toast feedback system.
+function initContactCopy() {
   document.addEventListener('click', (e) => {
-    if (e.target && e.target.closest('#copy-email-btn')) {
-      const email = PORTFOLIO_DATA.personal.email;
-      navigator.clipboard.writeText(email).then(() => {
-        showToast('✓ Email copied to clipboard: ' + email);
-      }).catch(() => {
-        showToast('Email: ' + email);
-      });
-    }
+    const button = e.target?.closest('[data-copy-contact]');
+    if (!button) return;
+
+    const contactDetails = {
+      email: {
+        value: PORTFOLIO_DATA.personal.email,
+        label: 'Email'
+      },
+      phone: {
+        value: PORTFOLIO_DATA.personal.phone,
+        label: 'Phone number'
+      }
+    };
+    const detail = contactDetails[button.dataset.copyContact];
+    if (!detail) return;
+
+    const buttonLabel = button.querySelector('[data-copy-label]');
+    const originalLabel = buttonLabel?.textContent || 'Copy';
+
+    navigator.clipboard.writeText(detail.value).then(() => {
+      if (buttonLabel) buttonLabel.textContent = 'Copied';
+      button.classList.add('is-copied');
+      showToast(`✓ ${detail.label} copied: ${detail.value}`);
+
+      window.setTimeout(() => {
+        if (buttonLabel) buttonLabel.textContent = originalLabel;
+        button.classList.remove('is-copied');
+      }, 1800);
+    }).catch(() => {
+      showToast(`${detail.label}: ${detail.value}`);
+    });
   });
 }
 

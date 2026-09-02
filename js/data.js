@@ -9,6 +9,13 @@ export const PORTFOLIO_DATA = {
     company: "ALPS Global Holding Berhad",
     linkedinUrl: "https://www.linkedin.com/in/muhammad-nurazam-87b337252",
     email: "nurazam190@gmail.com",
+    phone: "0174863816",
+    portfolioUrl: "https://nurazam190.github.io/",
+    portfolioDisplay: "nurazam190.github.io",
+    contactLocation: {
+      city: "Kuala Lumpur",
+      country: "Malaysia"
+    },
     linkedinHeadline: "HR Executive @ ALPS Global Holding Berhad | Talent Acquisition | Employee Relations | HR Operations",
     positioning: "HR Professional | Talent Acquisition | Employee Relations | HR Operations",
     brandPhilosophy: "A journey in HR shaped by people, experience, and continuous learning.",
