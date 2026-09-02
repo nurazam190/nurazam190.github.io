@@ -361,47 +361,73 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .hero-ambient {
   position: absolute;
   display: block;
   pointer-events: none;
-  border-radius: 50%;
   will-change: transform;
 }
 
 .hero-ambient--teal {
-  width: clamp(26.25rem, 42vw, 37.5rem);
-  height: clamp(26.25rem, 42vw, 37.5rem);
-  top: 1%;
-  right: -5%;
+  width: clamp(32.5rem, 49vw, 43.75rem);
+  height: clamp(27.5rem, 41vw, 35rem);
+  top: -5%;
+  right: -3%;
+  border-radius: 48% 52% 63% 37% / 41% 58% 42% 59%;
   background-color: #DCEBE7;
-  filter: blur(70px);
-  opacity: 0.28;
-  animation: heroTealFloat 22s ease-in-out infinite alternate;
+  filter: blur(100px);
+  opacity: 0.27;
+  animation: heroTealFloat 24s ease-in-out infinite alternate;
 }
 
 .hero-ambient--sand {
-  width: clamp(21.875rem, 35vw, 31.25rem);
-  height: clamp(21.875rem, 35vw, 31.25rem);
-  left: -11%;
-  bottom: -7%;
+  width: clamp(26.25rem, 41vw, 36.25rem);
+  height: clamp(23.75rem, 34vw, 30rem);
+  left: -6%;
+  bottom: -1%;
+  border-radius: 57% 43% 38% 62% / 46% 61% 39% 54%;
   background-color: #F1E3D3;
-  filter: blur(80px);
-  opacity: 0.3;
-  animation: heroSandDrift 28s ease-in-out infinite alternate;
+  filter: blur(105px);
+  opacity: 0.25;
+  animation: heroSandDrift 30s ease-in-out infinite alternate;
 }
 
-.hero-ambient--accent {
-  width: 4.25rem;
-  height: 4.25rem;
-  top: 19%;
-  left: 51%;
-  background-color: #D8B48A;
-  filter: blur(2px);
-  opacity: 0.24;
-  animation: heroAccentDrift 18s ease-in-out infinite alternate;
+.hero-ambient--lines {
+  width: 18rem;
+  height: 11rem;
+  top: 11%;
+  right: 37%;
+  animation: heroEditorialDrift 18s ease-in-out infinite alternate;
+}
+
+.hero-ambient--lines::before,
+.hero-ambient--lines::after {
+  content: '';
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.hero-ambient--lines::before {
+  width: 15rem;
+  height: 7.5rem;
+  top: 0;
+  left: 0;
+  border-top: 1px solid rgba(216, 180, 138, 0.42);
+  transform: rotate(-8deg);
+}
+
+.hero-ambient--lines::after {
+  width: 9.5rem;
+  height: 5rem;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid rgba(31, 111, 104, 0.25);
+  transform: rotate(11deg);
 }
 
 .hero-copy {
@@ -909,7 +935,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   to {
-    transform: translate3d(35px, -25px, 0) scale(1.06) rotate(2deg);
+    transform: translate3d(-40px, 28px, 0) scale(1.05) rotate(2deg);
   }
 }
 
@@ -918,16 +944,16 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   to {
-    transform: translate3d(-32px, -22px, 0) scale(1.05) rotate(-2deg);
+    transform: translate3d(42px, -24px, 0) scale(1.05) rotate(-2deg);
   }
 }
 
-@keyframes heroAccentDrift {
+@keyframes heroEditorialDrift {
   from {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   to {
-    transform: translate3d(8px, -30px, 0) scale(1.04) rotate(6deg);
+    transform: translate3d(26px, -20px, 0) rotate(2deg);
   }
 }
 
@@ -952,29 +978,38 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 @media (max-width: 767px) {
   .hero-ambient--teal {
-    width: 23rem;
-    height: 23rem;
-    top: 46%;
-    right: -11rem;
-    filter: blur(60px);
-    opacity: 0.22;
+    width: 29rem;
+    height: 24rem;
+    top: 48%;
+    right: -10rem;
+    filter: blur(82px);
+    opacity: 0.21;
   }
 
   .hero-ambient--sand {
-    width: 20rem;
-    height: 20rem;
-    left: -11rem;
-    bottom: 12%;
-    filter: blur(66px);
-    opacity: 0.23;
+    width: 25rem;
+    height: 21rem;
+    left: -10rem;
+    bottom: 14%;
+    filter: blur(86px);
+    opacity: 0.21;
   }
 
-  .hero-ambient--accent {
-    width: 2.75rem;
-    height: 2.75rem;
+  .hero-ambient--lines {
+    width: 10rem;
+    height: 6rem;
     top: 40%;
-    left: 8%;
-    opacity: 0.18;
+    right: -1rem;
+  }
+
+  .hero-ambient--lines::before {
+    width: 8.5rem;
+    height: 4.25rem;
+    border-top-color: rgba(216, 180, 138, 0.28);
+  }
+
+  .hero-ambient--lines::after {
+    display: none;
   }
 
   #impact::before {

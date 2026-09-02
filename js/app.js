@@ -60,7 +60,7 @@ function renderHero() {
       <div class="hero-atmosphere" aria-hidden="true">
         <span class="hero-ambient hero-ambient--teal"></span>
         <span class="hero-ambient hero-ambient--sand"></span>
-        <span class="hero-ambient hero-ambient--accent"></span>
+        <span class="hero-ambient hero-ambient--lines"></span>
       </div>
 
       <!-- Left Column: Editorial Identity & CTAs (approx 58%) -->
