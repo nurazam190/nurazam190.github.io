@@ -1,8 +1,8 @@
-﻿// Single Source of Truth for Muhammad Nur Azam's HR Portfolio
+﻿// Single Source of Truth for Muhammad Nurazam's HR Portfolio
 
 export const PORTFOLIO_DATA = {
   personal: {
-    name: "Muhammad Nur Azam",
+    name: "Muhammad Nurazam",
     shortName: "Azam",
     badge: "HR Professional",
     currentRole: "Human Resources Executive",
@@ -21,7 +21,7 @@ export const PORTFOLIO_DATA = {
     brandPhilosophy: "A journey in HR shaped by people, experience, and continuous learning.",
     location: "Malaysia",
     portrait: "assets/images/portrait.jpg",
-    portraitAlt: "Muhammad Nur Azam — HR Professional"
+    portraitAlt: "Muhammad Nurazam — HR Professional"
   },
 
   hero: {
@@ -333,7 +333,7 @@ export const PORTFOLIO_DATA = {
 
   resume: {
     title: "Curriculum Vitae",
-    subtitle: "Muhammad Nur Azam — Human Resources Professional",
+    subtitle: "Muhammad Nurazam — Human Resources Professional",
     filePath: "assets/resume.pdf",
     highlights: [
       "Current HR Executive at ALPS Global Holding Berhad (100+ employees scope)",

@@ -1,4 +1,4 @@
-// Main JavaScript Application for Muhammad Nur Azam's HR Portfolio
+// Main JavaScript Application for Muhammad Nurazam's HR Portfolio
 import { PORTFOLIO_DATA } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {

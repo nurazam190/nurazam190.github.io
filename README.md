@@ -1,6 +1,6 @@
-# Muhammad Nur Azam | HR Portfolio
+# Muhammad Nurazam | HR Portfolio
 
-A professional personal portfolio website for Muhammad Nur Azam, an HR professional focused on talent acquisition, employee relations, HR operations, and HR compliance.
+A professional personal portfolio website for Muhammad Nurazam, an HR professional focused on talent acquisition, employee relations, HR operations, and HR compliance.
 
 ## Technologies used
 - HTML5
@@ -50,7 +50,7 @@ nurazam190.github.io
 ```
 
 ## Author
-Muhammad Nur Azam
+Muhammad Nurazam
 
 LinkedIn:
 https://www.linkedin.com/in/muhammad-nurazam-87b337252
