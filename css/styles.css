@@ -349,7 +349,45 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   margin-top: 1rem !important;
 }
 
-/* Hero: editorial cover treatment */
+/* Hero: journal artwork, soft overlay, atmosphere, then content. */
+#about {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+#about::before,
+#about::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  pointer-events: none;
+}
+
+#about::before {
+  z-index: 0;
+  background-color: var(--bg-primary);
+  background-image: url('../assets/images/journal-background.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateX(-50%);
+  animation: journalBackgroundDrift 38s ease-in-out infinite alternate;
+  will-change: background-position;
+}
+
+#about::after {
+  z-index: 1;
+  background-color: rgba(247, 243, 238, 0.72);
+  transform: translateX(-50%);
+}
+
+#about > #hero-content {
+  z-index: 2;
+}
+
 .hero-layout {
   position: relative;
   isolation: isolate;
@@ -428,6 +466,22 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   bottom: 0;
   border-top: 1px solid rgba(31, 111, 104, 0.25);
   transform: rotate(11deg);
+}
+
+.hero-ambient--dots {
+  width: 3px;
+  height: 3px;
+  right: 45%;
+  bottom: 19%;
+  border-radius: 50%;
+  opacity: 0.38;
+  background-color: rgba(31, 111, 104, 0.62);
+  box-shadow:
+    16px 0 rgba(31, 111, 104, 0.62), 32px 0 rgba(31, 111, 104, 0.62), 48px 0 rgba(31, 111, 104, 0.62), 64px 0 rgba(31, 111, 104, 0.62), 80px 0 rgba(31, 111, 104, 0.62),
+    0 16px rgba(31, 111, 104, 0.62), 16px 16px rgba(31, 111, 104, 0.62), 32px 16px rgba(31, 111, 104, 0.62), 48px 16px rgba(31, 111, 104, 0.62), 64px 16px rgba(31, 111, 104, 0.62), 80px 16px rgba(31, 111, 104, 0.62),
+    0 32px rgba(31, 111, 104, 0.62), 16px 32px rgba(31, 111, 104, 0.62), 32px 32px rgba(31, 111, 104, 0.62), 48px 32px rgba(31, 111, 104, 0.62), 64px 32px rgba(31, 111, 104, 0.62), 80px 32px rgba(31, 111, 104, 0.62),
+    0 48px rgba(31, 111, 104, 0.62), 16px 48px rgba(31, 111, 104, 0.62), 32px 48px rgba(31, 111, 104, 0.62), 48px 48px rgba(31, 111, 104, 0.62), 64px 48px rgba(31, 111, 104, 0.62), 80px 48px rgba(31, 111, 104, 0.62);
+  animation: heroDotDrift 32s ease-in-out infinite alternate;
 }
 
 .hero-copy {
@@ -1130,6 +1184,15 @@ a.contact-directory__value:hover {
   transform: translateY(0);
 }
 
+@keyframes journalBackgroundDrift {
+  from {
+    background-position: 50% 50%;
+  }
+  to {
+    background-position: calc(50% + 8px) calc(50% - 6px);
+  }
+}
+
 @keyframes heroTealFloat {
   from {
     transform: translate3d(0, 0, 0) scale(1) rotate(0);
@@ -1157,6 +1220,15 @@ a.contact-directory__value:hover {
   }
 }
 
+@keyframes heroDotDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+  }
+  to {
+    transform: translate3d(18px, -14px, 0) scale(1.03) rotate(1deg);
+  }
+}
+
 @keyframes editorialFloatContact {
   from {
     transform: translate3d(-0.75rem, 0, 0) scale(0.98) rotate(-1deg);
@@ -1167,6 +1239,17 @@ a.contact-directory__value:hover {
 }
 
 @media (min-width: 1024px) {
+  .hero-copy::before {
+    content: '';
+    position: absolute;
+    inset: -1.5rem -1.25rem;
+    z-index: -1;
+    border-radius: 22% 18% 24% 16% / 18% 24% 17% 23%;
+    background-color: rgba(247, 243, 238, 0.76);
+    filter: blur(26px);
+    pointer-events: none;
+  }
+
   .impact-item:not(:nth-child(3n + 1)) {
     border-left: 1px solid rgba(31, 111, 104, 0.23);
   }
@@ -1183,6 +1266,16 @@ a.contact-directory__value:hover {
 }
 
 @media (max-width: 767px) {
+  #about::before {
+    background-position: 50% center;
+    animation: none;
+    will-change: auto;
+  }
+
+  #about::after {
+    background-color: rgba(247, 243, 238, 0.82);
+  }
+
   .hero-ambient--teal {
     width: 29rem;
     height: 24rem;
@@ -1215,6 +1308,10 @@ a.contact-directory__value:hover {
   }
 
   .hero-ambient--lines::after {
+    display: none;
+  }
+
+  .hero-ambient--dots {
     display: none;
   }
 
@@ -1380,6 +1477,7 @@ a.contact-directory__value:hover {
     transform: none;
   }
 
+  #about::before,
   .hero-ambient,
   .contact-panel::before {
     animation: none !important;
