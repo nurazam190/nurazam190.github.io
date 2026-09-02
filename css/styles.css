@@ -633,41 +633,84 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   border-color: var(--border-subtle) !important;
 }
 
-/* Impact metrics, intentionally not dashboard cards */
+/* Qualitative impact areas in a border-separated editorial grid. */
 .impact-grid {
   border-top: 1px solid rgba(31, 111, 104, 0.3);
 }
 
 .impact-item {
+  display: flex;
+  flex-direction: column;
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid rgba(31, 111, 104, 0.23);
   border-radius: 0;
-  min-height: 15rem;
-  padding: 2rem 1.5rem !important;
+  min-height: 21rem;
+  padding: 2rem !important;
+  transition: background-color 220ms ease, border-color 220ms ease;
 }
 
 .impact-item:hover {
-  background-color: rgba(255, 253, 252, 0.42);
+  background-color: rgba(241, 227, 211, 0.28);
   border-color: var(--sand);
   box-shadow: none;
+  transform: none;
 }
 
-.impact-metric {
-  display: block;
+.impact-index {
+  display: inline-flex;
   width: fit-content;
-  max-width: 13ch;
-  padding: 0 !important;
-  color: var(--accent-primary) !important;
-  background: transparent !important;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+  color: #835B32;
   font-family: var(--font-heading);
-  font-size: clamp(1.55rem, 2.5vw, 2.25rem) !important;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1;
 }
 
-.impact-item h3 {
-  color: var(--text-primary) !important;
+.impact-index::after {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background-color: rgba(216, 180, 138, 0.8);
+}
+
+.impact-item__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.impact-title {
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  color: var(--accent-primary) !important;
+  font-size: clamp(1.45rem, 2.1vw, 1.9rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+
+.impact-subtitle {
+  margin-top: 0.8rem;
+  color: #4F5F65;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.impact-description {
+  margin-top: 1.15rem;
+  color: #59656E;
+  font-size: 0.9rem;
+  line-height: 1.75;
 }
 
 /* Selected work: full-width editorial case-study modules */
@@ -1133,6 +1176,12 @@ a.contact-directory__value:hover {
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .impact-item:nth-child(even) {
+    border-left: 1px solid rgba(31, 111, 104, 0.23);
+  }
+}
+
 @media (max-width: 767px) {
   .hero-ambient--teal {
     width: 29rem;
@@ -1282,6 +1331,7 @@ a.contact-directory__value:hover {
 
   .impact-item {
     min-height: auto;
+    padding: 1.75rem 1.5rem !important;
   }
 
   .case-study-grid {

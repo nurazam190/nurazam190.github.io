@@ -92,40 +92,46 @@ export const PORTFOLIO_DATA = {
 
   achievements: [
     {
-      id: "fin-hiring",
-      metric: "3 Vacancies in 1 Month",
-      title: "Finance Vacancies Closed",
-      description: "Successfully sourced, screened, and closed 3 Finance department vacancies within 30 days to support urgent business unit expansion."
+      id: "case-management",
+      metric: "01",
+      title: "End-to-End Case Management",
+      subtitle: "Disciplinary & Domestic Inquiry",
+      description: "Managed disciplinary and Domestic Inquiry (DI) cases end-to-end, ensuring proper documentation, procedural compliance, and timely resolution in accordance with company policies and Employment Act requirements."
     },
     {
-      id: "sr-hr-hiring",
-      metric: "Filled in 1 Month",
-      title: "Senior HR Generalist Position",
-      description: "Managed end-to-end recruitment to place a critical Senior HR Generalist position within a 1-month turnaround time."
+      id: "misconduct-handling",
+      metric: "02",
+      title: "Sensitive Misconduct Handling",
+      subtitle: "Employee Relations & Risk Management",
+      description: "Handled sensitive employee misconduct cases involving fraud, attendance issues, and policy violations while maintaining confidentiality and minimizing organizational risk exposure."
     },
     {
-      id: "er-di",
-      metric: "End-to-End",
-      title: "Domestic Inquiry & Misconduct Management",
-      description: "Handled sensitive employee misconduct investigations involving fraud, attendance violations, and policy breaches with full procedural compliance."
+      id: "hr-advisory",
+      metric: "03",
+      title: "HR Advisory Support",
+      subtitle: "Employee Relations & Policy Guidance",
+      description: "Provided HR advisory support to line managers on employee relations matters, disciplinary actions, and policy interpretation to support consistent and compliant decision-making."
     },
     {
-      id: "sop-dev",
-      metric: "Standardized",
-      title: "In-House Sales SOP Development",
-      description: "Authored, documented, and rolled out comprehensive operational SOPs to improve workflow clarity and operational consistency."
+      id: "full-cycle-recruitment",
+      metric: "04",
+      title: "Full-Cycle Recruitment",
+      subtitle: "Talent Acquisition",
+      description: "Handle end-to-end recruitment activities for ALPS Global Holding Berhad, including job posting, CV screening, interview coordination, and offer management to support efficient hiring turnaround."
     },
     {
-      id: "exit-reporting",
-      metric: "Actionable Insights",
-      title: "Employee Exit Analysis Reporting",
-      description: "Compiled structured exit analysis reports to provide executive management with data-backed visibility into retention and turnover patterns."
+      id: "exit-insights",
+      metric: "05",
+      title: "Actionable Exit Insights",
+      subtitle: "Employee Exit Analysis",
+      description: "Produced employee exit analysis reports for management, providing insights into turnover trends and supporting workforce planning and decision-making."
     },
     {
-      id: "capability-training",
-      metric: "Capability Development",
-      title: "In-House Sales Capability Training",
-      description: "Conducted structured training and competency development sessions to standardize daily operational execution."
+      id: "employee-well-being",
+      metric: "06",
+      title: "Employee Well-Being",
+      subtitle: "Welfare & Engagement",
+      description: "Managed employee welfare programs and engagement initiatives to support staff well-being and improve workplace satisfaction."
     }
   ],
 

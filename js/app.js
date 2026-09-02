@@ -238,21 +238,16 @@ function renderAchievements() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="impact-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="impact-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
       ${achievements.map(item => `
-        <div class="impact-item editorial-card p-6 flex flex-col justify-between">
-          <div>
-            <div class="impact-metric inline-block px-3 py-1 text-xs font-bold mb-4">
-              ${item.metric}
-            </div>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 font-heading">
-              ${item.title}
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              ${item.description}
-            </p>
+        <article class="impact-item editorial-card">
+          <span class="impact-index">${item.metric}</span>
+          <div class="impact-item__content">
+            <h3 class="impact-title font-heading">${item.title}</h3>
+            <p class="impact-subtitle">${item.subtitle}</p>
+            <p class="impact-description">${item.description}</p>
           </div>
-        </div>
+        </article>
       `).join('')}
     </div>
   `;
