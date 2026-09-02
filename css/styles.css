@@ -41,6 +41,8 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   padding: 0;
   background-color: var(--bg-primary);
@@ -49,8 +51,28 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../assets/images/journal-background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 main {
+  position: relative;
+  z-index: 1;
   isolation: isolate;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 a:focus-visible,
@@ -258,8 +280,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .section-shell {
   position: relative;
   scroll-margin-top: 5rem;
-  background-color: var(--bg-primary);
-  box-shadow: 0 0 0 100vmax var(--bg-primary);
+  background-color: rgba(247, 243, 238, 0.92);
+  box-shadow: 0 0 0 100vmax rgba(247, 243, 238, 0.92);
   clip-path: inset(0 -100vmax);
 }
 
@@ -288,13 +310,13 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 #journey,
 #expertise {
-  background-color: var(--cream);
-  box-shadow: 0 0 0 100vmax var(--cream);
+  background-color: rgba(255, 253, 252, 0.96);
+  box-shadow: 0 0 0 100vmax rgba(255, 253, 252, 0.96);
 }
 
 #impact {
-  background-color: var(--accent-soft);
-  box-shadow: 0 0 0 100vmax var(--accent-soft);
+  background-color: rgba(220, 235, 231, 0.96);
+  box-shadow: 0 0 0 100vmax rgba(220, 235, 231, 0.96);
 }
 
 #impact::before {
@@ -311,8 +333,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 #selected-work,
 #resume,
 #contact {
-  background-color: var(--bg-primary);
-  box-shadow: 0 0 0 100vmax var(--bg-primary);
+  background-color: rgba(247, 243, 238, 0.93);
+  box-shadow: 0 0 0 100vmax rgba(247, 243, 238, 0.93);
 }
 
 .section-intro {
@@ -353,7 +375,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 #about {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #about::before,
@@ -466,22 +488,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   bottom: 0;
   border-top: 1px solid rgba(31, 111, 104, 0.25);
   transform: rotate(11deg);
-}
-
-.hero-ambient--dots {
-  width: 3px;
-  height: 3px;
-  right: 45%;
-  bottom: 19%;
-  border-radius: 50%;
-  opacity: 0.38;
-  background-color: rgba(31, 111, 104, 0.62);
-  box-shadow:
-    16px 0 rgba(31, 111, 104, 0.62), 32px 0 rgba(31, 111, 104, 0.62), 48px 0 rgba(31, 111, 104, 0.62), 64px 0 rgba(31, 111, 104, 0.62), 80px 0 rgba(31, 111, 104, 0.62),
-    0 16px rgba(31, 111, 104, 0.62), 16px 16px rgba(31, 111, 104, 0.62), 32px 16px rgba(31, 111, 104, 0.62), 48px 16px rgba(31, 111, 104, 0.62), 64px 16px rgba(31, 111, 104, 0.62), 80px 16px rgba(31, 111, 104, 0.62),
-    0 32px rgba(31, 111, 104, 0.62), 16px 32px rgba(31, 111, 104, 0.62), 32px 32px rgba(31, 111, 104, 0.62), 48px 32px rgba(31, 111, 104, 0.62), 64px 32px rgba(31, 111, 104, 0.62), 80px 32px rgba(31, 111, 104, 0.62),
-    0 48px rgba(31, 111, 104, 0.62), 16px 48px rgba(31, 111, 104, 0.62), 32px 48px rgba(31, 111, 104, 0.62), 48px 48px rgba(31, 111, 104, 0.62), 64px 48px rgba(31, 111, 104, 0.62), 80px 48px rgba(31, 111, 104, 0.62);
-  animation: heroDotDrift 32s ease-in-out infinite alternate;
 }
 
 .hero-copy {
@@ -856,9 +862,32 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Journal: signature publication section */
 .journal-section {
+  position: relative;
+  isolation: isolate;
   background-color: var(--text-primary);
   box-shadow: 0 0 0 100vmax var(--text-primary);
   border-color: rgba(216, 180, 138, 0.32) !important;
+}
+
+.journal-section::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  z-index: 0;
+  background-image: url('../assets/images/journal-background.jpg');
+  background-position: center 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.035;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.journal-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .journal-section .section-intro::before {
@@ -1220,15 +1249,6 @@ a.contact-directory__value:hover {
   }
 }
 
-@keyframes heroDotDrift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0);
-  }
-  to {
-    transform: translate3d(18px, -14px, 0) scale(1.03) rotate(1deg);
-  }
-}
-
 @keyframes editorialFloatContact {
   from {
     transform: translate3d(-0.75rem, 0, 0) scale(0.98) rotate(-1deg);
@@ -1308,10 +1328,6 @@ a.contact-directory__value:hover {
   }
 
   .hero-ambient--lines::after {
-    display: none;
-  }
-
-  .hero-ambient--dots {
     display: none;
   }
 

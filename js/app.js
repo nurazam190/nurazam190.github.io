@@ -61,7 +61,6 @@ function renderHero() {
         <span class="hero-ambient hero-ambient--teal"></span>
         <span class="hero-ambient hero-ambient--sand"></span>
         <span class="hero-ambient hero-ambient--lines"></span>
-        <span class="hero-ambient hero-ambient--dots"></span>
       </div>
 
       <!-- Left Column: Editorial Identity & CTAs (approx 58%) -->
