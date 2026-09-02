@@ -263,6 +263,57 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   clip-path: inset(0 -100vmax);
 }
 
+/* Low-opacity atmospheric layers sit behind content and never affect layout. */
+#about,
+#impact {
+  isolation: isolate;
+  overflow: clip;
+}
+
+#about::before,
+#about::after,
+#impact::before,
+.contact-panel::before {
+  content: '';
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#hero-content,
+#impact > *,
+.contact-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+#about::before {
+  width: 32rem;
+  height: 24rem;
+  top: 7rem;
+  right: -5rem;
+  border-radius: 52% 48% 44% 56% / 46% 58% 42% 54%;
+  background-color: var(--accent-primary);
+  filter: blur(76px);
+  opacity: 0.1;
+  animation: editorialFloatTeal 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+#about::after {
+  width: 23rem;
+  height: 17rem;
+  right: 25%;
+  bottom: 2rem;
+  border-radius: 46% 54% 57% 43% / 58% 44% 56% 42%;
+  background-color: var(--sand);
+  filter: blur(72px);
+  opacity: 0.11;
+  animation: editorialFloatSand 32s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 #journey,
 #expertise {
   background-color: var(--cream);
@@ -272,6 +323,17 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 #impact {
   background-color: var(--accent-soft);
   box-shadow: 0 0 0 100vmax var(--accent-soft);
+}
+
+#impact::before {
+  width: 24rem;
+  height: 15rem;
+  right: -7rem;
+  bottom: 2rem;
+  border-radius: 58% 42% 51% 49% / 47% 56% 44% 53%;
+  background-color: var(--sand);
+  filter: blur(68px);
+  opacity: 0.1;
 }
 
 #selected-work,
@@ -747,6 +809,20 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background-color: var(--text-primary) !important;
   border: 1px solid rgba(216, 180, 138, 0.38);
   border-radius: 2px;
+  isolation: isolate;
+}
+
+.contact-panel::before {
+  width: 25rem;
+  height: 20rem;
+  right: -8rem;
+  bottom: -9rem;
+  border-radius: 51% 49% 43% 57% / 57% 45% 55% 43%;
+  background-color: var(--warm-highlight);
+  filter: blur(64px);
+  opacity: 0.1;
+  animation: editorialFloatContact 30s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .contact-panel::after {
@@ -805,6 +881,33 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transform: translateY(0);
 }
 
+@keyframes editorialFloatTeal {
+  from {
+    transform: translate3d(-1.25rem, -0.4rem, 0) scale(0.96) rotate(-2deg);
+  }
+  to {
+    transform: translate3d(1.5rem, 1rem, 0) scale(1.04) rotate(2deg);
+  }
+}
+
+@keyframes editorialFloatSand {
+  from {
+    transform: translate3d(0.75rem, 0.5rem, 0) scale(1) rotate(1deg);
+  }
+  to {
+    transform: translate3d(-1.5rem, -0.75rem, 0) scale(1.05) rotate(-2deg);
+  }
+}
+
+@keyframes editorialFloatContact {
+  from {
+    transform: translate3d(-0.75rem, 0, 0) scale(0.98) rotate(-1deg);
+  }
+  to {
+    transform: translate3d(1.25rem, -1rem, 0) scale(1.04) rotate(2deg);
+  }
+}
+
 @media (min-width: 1024px) {
   .impact-item:not(:nth-child(3n + 1)) {
     border-left: 1px solid rgba(31, 111, 104, 0.23);
@@ -816,6 +919,37 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 @media (max-width: 767px) {
+  #about::before {
+    width: 18rem;
+    height: 15rem;
+    top: 44%;
+    right: -9rem;
+    filter: blur(54px);
+    opacity: 0.08;
+  }
+
+  #about::after {
+    display: none;
+  }
+
+  #impact::before {
+    width: 14rem;
+    height: 10rem;
+    right: -7rem;
+    bottom: 15%;
+    filter: blur(48px);
+    opacity: 0.07;
+  }
+
+  .contact-panel::before {
+    width: 16rem;
+    height: 13rem;
+    right: -7rem;
+    bottom: -6rem;
+    filter: blur(46px);
+    opacity: 0.08;
+  }
+
   .section-intro {
     padding-left: 1rem;
   }
@@ -923,5 +1057,13 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .reveal-target {
     opacity: 1;
     transform: none;
+  }
+
+  #about::before,
+  #about::after,
+  .contact-panel::before {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
   }
 }
