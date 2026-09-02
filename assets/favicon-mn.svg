@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>NA monogram</title>
+  <title>MN monogram</title>
   <rect width="64" height="64" rx="12" fill="#1F6F68" />
   <path
-    d="M12 44V20L28 44V20M34 44L43 20L52 44M38 34H48"
+    d="M10 44V20L20 34L30 20V44M36 44V20L54 44V20"
     fill="none"
     stroke="#FFFDFC"
-    stroke-width="5.5"
+    stroke-width="5"
     stroke-linecap="square"
     stroke-linejoin="miter"
   />
