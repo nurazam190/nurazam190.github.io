@@ -5,7 +5,7 @@ export const PORTFOLIO_DATA = {
     name: "Muhammad Nurazam",
     shortName: "Azam",
     badge: "HR Professional",
-    currentRole: "Human Resources Executive",
+    currentRole: "HR Executive",
     company: "ALPS Global Holding Berhad",
     linkedinUrl: "https://www.linkedin.com/in/muhammad-nurazam-87b337252",
     email: "nurazam190@gmail.com",
@@ -30,8 +30,10 @@ export const PORTFOLIO_DATA = {
     headlineAccent: "Modern Human Resources.",
     bio: "Supporting 100+ employees across diverse business units with a focus on talent acquisition, employee relations, and reliable HR operations. Grounded in empathy, compliance, and continuous growth.",
     heroProofPoints: [
-      { label: "Workforce Scope", value: "100+ Employees Supported" },
-      { label: "Specialization", value: "Talent Acquisition & Employee Relations" }
+      { value: "100+", label: "Employees Supported" },
+      { value: "End-to-End", label: "Recruitment" },
+      { value: "ER / IR", label: "Case Management" },
+      { value: "HRD Corp", label: "Training & Claims" }
     ]
   },
 
@@ -56,9 +58,12 @@ export const PORTFOLIO_DATA = {
   careerJourney: [
     {
       id: "alps",
+      number: "01",
       company: "ALPS Global Holding Berhad",
-      role: "Human Resources Executive",
-      period: "February 2025 – Present",
+      role: "HR Executive",
+      period: "FEB 2025 — PRESENT",
+      location: "Kuala Lumpur",
+      stage: "Full-Scope Human Resources",
       isCurrent: true,
       badge: "Current Role",
       summary: "Driving recruitment, onboarding, employee relations, and comprehensive HR operations for 100+ employees across multiple business units.",
@@ -74,12 +79,15 @@ export const PORTFOLIO_DATA = {
     },
     {
       id: "tsubaki",
-      company: "Tsubaki Power Transmission",
-      role: "Sales Services / Human Resources Support",
-      period: "December 2022 – January 2025",
+      number: "02",
+      company: "Tsubaki Power Transmission (Malaysia) Sdn. Bhd.",
+      role: "Sales Services, Human Resources Executive",
+      period: "DEC 2022 — JAN 2025",
+      location: "Malaysia",
+      stage: "Corporate Sales Operations + HR Exposure",
       isCurrent: false,
-      badge: "Foundational Experience",
-      summary: "Held a hybrid role managing international customer and sales operations while supporting localized human resources and talent initiatives.",
+      badge: "Career Transition",
+      summary: "Built corporate sales and international client experience while gaining practical exposure across Human Resources and talent initiatives.",
       responsibilities: [
         "Global sales support for international clients across the US, Japan, and Germany",
         "Recruitment pipeline support, candidate screening, and interview scheduling",
@@ -87,8 +95,62 @@ export const PORTFOLIO_DATA = {
         "Employee relations support and corporate welfare event coordination",
         "Standard Operating Procedure (SOP) development and team capability training for the In-House Sales Department"
       ]
+    },
+    {
+      id: "mcdonalds",
+      number: "03",
+      company: "McDonald's",
+      role: "Part-Time Crew",
+      period: "NOV 2020 — DEC 2022",
+      location: "Subang Bestari",
+      stage: "Fast-Paced Operations, Teamwork & Early Leadership",
+      isCurrent: false,
+      isEarlyCareer: true,
+      badge: "Early Career",
+      summary: "Built a strong foundation in customer service, teamwork, time management, and fast-paced operations while balancing work with studies. Took on additional responsibilities including supporting and guiding new crew members on procedures and operational best practices.",
+      competencies: [
+        "Customer Service",
+        "Teamwork",
+        "Time Management",
+        "Early Leadership"
+      ]
+    },
+    {
+      id: "parkson",
+      number: "04",
+      company: "Parkson",
+      role: "Cashier",
+      period: "JAN 2020 — JUN 2020",
+      location: "NU Sentral",
+      stage: "Customer Service Foundation",
+      isCurrent: false,
+      isEarlyCareer: true,
+      badge: "Career Foundation",
+      summary: "Developed early professional discipline through customer-facing retail operations, cash handling, transaction accuracy, customer service, and team collaboration.",
+      competencies: [
+        "Customer Service",
+        "Cash Accountability",
+        "Communication",
+        "Teamwork"
+      ]
     }
   ],
+
+  educationFoundation: {
+    eyebrow: "Education & Foundation",
+    headline: "Built on Human Resources education and practical cross-functional experience.",
+    education: {
+      label: "Education",
+      qualification: "Diploma in Human Resources",
+      institution: "Universiti Islam Selangor",
+      period: "2020 — 2023",
+      detail: "CGPA 3.45"
+    },
+    systems: {
+      label: "Professional Systems",
+      items: ["HR2000", "SAP", "Navision", "Microsoft Office"]
+    }
+  },
 
   achievements: [
     {
@@ -137,105 +199,60 @@ export const PORTFOLIO_DATA = {
 
   selectedWork: [
     {
-      id: "talent-acquisition",
+      id: "er-di-management",
       number: "01",
-      title: "End-to-End Talent Acquisition Pipeline",
-      category: "Talent Acquisition",
-      summary: "Managing high-velocity full lifecycle recruitment across entry-level to senior roles for diverse business units.",
-      context: "Business units required rapid talent turnaround across specialized finance and operational roles while maintaining high screening rigor.",
+      title: "Disciplinary & Domestic Inquiry Management",
+      category: "Employee Relations",
+      summary: "Structured handling of sensitive employee relations matters with procedural care.",
+      context: "Employee relations and misconduct matters requiring proper investigation, documentation, and procedural handling.",
       contribution: [
-        "Authored and published targeted job descriptions across professional recruitment channels",
-        "Conducted structured resume screening and preliminary competency interviews",
-        "Coordinated multi-stage interview panels with hiring managers",
-        "Facilitated offer management and seamless new hire onboarding"
+        "Managed preliminary investigation and fact-finding for misconduct matters",
+        "Prepared disciplinary documentation and supported Domestic Inquiry processes",
+        "Coordinated case handling through resolution with procedural care"
       ],
-      outcome: "Successfully closed 3 Finance vacancies within 1 month and placed a Senior HR Generalist within 1 month."
+      focus: ["Procedural Fairness", "Confidentiality", "Compliance", "Risk Management"]
     },
     {
-      id: "sales-sop",
+      id: "talent-acquisition",
       number: "02",
-      title: "In-House Sales Department SOP Development",
-      category: "SOP & Operations",
-      summary: "Designing and documenting standardized workflows for cross-border sales support operations.",
-      context: "International sales support serving clients across the US, Japan, and Germany needed consistent operational guidelines and clear handoff protocols.",
+      title: "End-to-End Talent Acquisition",
+      category: "Talent Acquisition",
+      summary: "Coordinated recruitment activity across multiple business functions and hiring stages.",
+      context: "Recruitment requirements across multiple business functions.",
       contribution: [
-        "Mapped daily operational workflows and identified process bottlenecks",
-        "Authored clear, comprehensive Standard Operating Procedures (SOPs)",
-        "Conducted walk-through sessions and trained team members on updated protocols"
+        "Managed job posting and CV screening",
+        "Coordinated interviews and stakeholder communication",
+        "Supported offer management and onboarding coordination"
       ],
-      outcome: "Improved workflow clarity and operational consistency across international client accounts."
+      focus: ["Hiring Turnaround", "Candidate Coordination", "Stakeholder Communication", "Employee Integration"]
     },
     {
       id: "exit-analysis",
       number: "03",
-      title: "Employee Exit Analysis & Management Reporting",
-      category: "HR Analytics & Retention",
-      summary: "Transforming departure feedback into structured, actionable management intelligence.",
-      context: "Leadership required systematic insight into employee turnover trends to support talent retention planning.",
+      title: "Employee Exit Analysis",
+      category: "Workforce Insights",
+      summary: "Converted employee departure information into structured management reporting.",
+      context: "Management visibility into employee turnover and workforce trends.",
       contribution: [
-        "Conducted professional and empathetic exit interview sessions",
-        "Categorized turnover drivers and compiled structured analytical reports",
-        "Presented objective findings and feedback summaries to management"
+        "Produced employee exit analysis reports",
+        "Organized turnover information into clear management insights",
+        "Supported workforce planning and decision-making"
       ],
-      outcome: "Provided management with structured visibility into turnover patterns and actionable employee feedback."
+      focus: ["Turnover Trends", "Workforce Insights", "Management Reporting", "Workforce Planning"]
     },
     {
-      id: "er-di-management",
+      id: "sales-sop",
       number: "04",
-      title: "Employee Relations & Domestic Inquiry Case Management",
-      category: "Employee Relations",
-      summary: "Upholding procedural fairness and policy integrity across sensitive workplace disciplinary cases.",
-      context: "Addressing workplace misconduct, attendance non-compliance, and policy breaches requiring strict procedural rigor.",
+      title: "Process & SOP Standardization",
+      category: "SOP & Operations",
+      summary: "Developed clearer operational guidance for the In-House Sales Department at Tsubaki.",
+      context: "Need for clearer and more consistent operational workflows.",
       contribution: [
-        "Conducted preliminary fact-finding and evidence gathering",
-        "Drafted formal show-cause documentation and handled employee responses",
-        "Coordinated Domestic Inquiry (DI) panel proceedings adhering strictly to natural justice principles",
-        "Guided line managers on policy interpretation and fair disciplinary practices"
+        "Developed and implemented an SOP for the In-House Sales Department",
+        "Documented operational workflows and clearer handoff practices",
+        "Supported team understanding of the standardized process"
       ],
-      outcome: "Resolved sensitive cases with full adherence to company policy and Malaysian labor compliance standards."
-    },
-    {
-      id: "hr-ops-payroll",
-      number: "05",
-      title: "HR Operations, Pre-Payroll & Statutory Compliance",
-      category: "HR Operations",
-      summary: "Maintaining reliable statutory compliance, employee documentation, and payroll data validation.",
-      context: "Ensuring 100+ personnel records, appointment letters, and statutory claims are processed accurately without delay.",
-      contribution: [
-        "Issued Letters of Appointment, contract renewals, and confirmation letters",
-        "Managed LHDN contract stamping compliance and maintained secure employee personnel files",
-        "Supported monthly pre-payroll data validation and attendance records",
-        "Administered HRD Corp training documentation and claim submissions"
-      ],
-      outcome: "Maintained compliant, up-to-date employee records and timely operational documentation."
-    },
-    {
-      id: "learning-development",
-      number: "06",
-      title: "Learning & Capability Development",
-      category: "Learning & Development",
-      summary: "Facilitating structured onboarding and competency development for operational teams.",
-      context: "Supporting continuous team readiness and standardized execution across department functions.",
-      contribution: [
-        "Structured new hire orientation modules covering departmental workflows",
-        "Facilitated capability development sessions for in-house team members",
-        "Tracked training participation and processed HRD Corp claim requirements"
-      ],
-      outcome: "Supported team readiness and standardized execution across daily operations."
-    },
-    {
-      id: "employee-welfare",
-      number: "07",
-      title: "Employee Welfare & Engagement Initiatives",
-      category: "Employee Welfare",
-      summary: "Administering medical benefits and coordinating workplace engagement activities.",
-      context: "Fostering a supportive workplace culture and reliable healthcare benefit access for employees.",
-      contribution: [
-        "Administered employee medical insurance enrollments and claims support",
-        "Organized corporate engagement initiatives and employee welfare events",
-        "Served as an approachable point of contact for employee welfare inquiries"
-      ],
-      outcome: "Ensured consistent employee welfare support and timely benefits administration."
+      focus: ["Process Clarity", "Consistency", "Documentation", "Capability Development"]
     }
   ],
 
@@ -284,50 +301,34 @@ export const PORTFOLIO_DATA = {
 
   expertise: [
     {
+      index: "01",
       domain: "Talent Acquisition",
-      badge: "Recruitment Lifecycle",
-      skills: [
-        "Job Posting",
-        "CV Screening",
-        "Interview Coordination",
-        "Interviewing",
-        "Offer Management",
-        "Onboarding"
-      ]
+      skills: ["Recruitment", "CV Screening", "Interview Coordination", "Offer Management", "Onboarding"]
     },
     {
-      domain: "Employee Relations & Governance",
-      badge: "Fairness & Compliance",
-      skills: [
-        "Disciplinary Investigations",
-        "Domestic Inquiry (DI) Coordination",
-        "Misconduct Case Management",
-        "Policy Interpretation",
-        "Line Manager Advisory"
-      ]
+      index: "02",
+      domain: "Employee & Industrial Relations",
+      skills: ["Employee Relations", "Disciplinary Action", "Misconduct Investigation", "Domestic Inquiry (DI)", "Employee Separation"]
     },
     {
-      domain: "HR Operations & Administration",
-      badge: "Documentation & Records",
-      skills: [
-        "HR Documentation",
-        "Letters of Appointment",
-        "Contract Renewals",
-        "Confirmation Letters",
-        "Employee Records Management",
-        "LHDN Stamping Compliance"
-      ]
+      index: "03",
+      domain: "HR Operations",
+      skills: ["Employee Lifecycle", "HR Documentation", "Employee Records", "Confirmation", "Contract Renewal", "Offboarding"]
     },
     {
-      domain: "Payroll, L&D & Welfare",
-      badge: "Support & Enablement",
-      skills: [
-        "Pre-Payroll Support & Validation",
-        "HRD Corp Training Claims",
-        "Learning & Capability Development",
-        "Medical Insurance Administration",
-        "Employee Welfare & Corporate Events"
-      ]
+      index: "04",
+      domain: "Payroll & Benefits",
+      skills: ["Pre-Payroll Administration", "Employee Benefits", "Medical Claims", "Insurance Administration"]
+    },
+    {
+      index: "05",
+      domain: "HR Compliance",
+      skills: ["Employment Act", "LHDN Stamping", "HR Audit Readiness", "Policy Administration", "SOP & Documentation"]
+    },
+    {
+      index: "06",
+      domain: "Learning & Workforce",
+      skills: ["HRD Corp", "Training Coordination", "Employee Development", "Manpower Planning", "Exit Analysis"]
     }
   ],
 
@@ -337,7 +338,7 @@ export const PORTFOLIO_DATA = {
     filePath: "assets/resume.pdf",
     highlights: [
       "Current HR Executive at ALPS Global Holding Berhad (100+ employees scope)",
-      "Prior hybrid Sales Services & HR Support at Tsubaki Power Transmission",
+      "Prior Sales Services and Human Resources experience at Tsubaki Power Transmission",
       "Demonstrated track record in full lifecycle recruitment, ER/DI, and operations"
     ]
   }

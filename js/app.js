@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHero();
   renderPhilosophy();
   renderCareerJourney();
+  renderEducationFoundation();
   renderAchievements();
   renderSelectedWork();
   renderHRJournal();
@@ -109,17 +110,12 @@ function renderHero() {
           </button>
         </div>
 
-        <!-- Subtle Proof Points Strip (Preserves whitespace & avoids clutter) -->
-        <div class="pt-6 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Compact Professional Snapshot -->
+        <div class="professional-snapshot pt-6 border-t border-slate-200/80 grid grid-cols-2 gap-0">
           ${hero.heroProofPoints.map(point => `
-            <div class="flex items-start gap-3">
-              <div class="p-1.5 rounded-lg bg-[#DCEBE7] text-[#1F6F68] shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-4 h-4"></i>
-              </div>
-              <div>
-                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">${point.label}</p>
-                <p class="text-sm font-semibold text-slate-800">${point.value}</p>
-              </div>
+            <div class="professional-snapshot__item">
+              <strong>${point.value}</strong>
+              <span>${point.label}</span>
             </div>
           `).join('')}
         </div>
@@ -197,41 +193,100 @@ function renderCareerJourney() {
 
   container.innerHTML = `
     <div class="journey-timeline space-y-8">
-      ${careerJourney.map(job => `
-        <div class="journey-entry editorial-card p-6 sm:p-8 lg:p-10 ${job.isCurrent ? 'is-current' : ''}">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+      ${careerJourney.map((job, index) => `
+        ${job.isEarlyCareer && index === 2 ? `
+          <div class="career-foundation-label">
+            <span>Early Career Foundation</span>
+            <p>Customer service, operational discipline, teamwork, and early responsibility.</p>
+          </div>
+        ` : ''}
+        <article class="journey-entry editorial-card p-6 sm:p-8 lg:p-10 ${job.isCurrent ? 'is-current' : ''} ${job.isEarlyCareer ? 'is-early-career' : ''}">
+          <div class="journey-entry__header flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-slate-100">
             <div>
+              <div class="journey-entry__meta">
+                <span>${job.number}</span>
+                <span>${job.stage}</span>
+              </div>
               <div class="flex flex-wrap items-center gap-2.5 mb-1.5">
                 <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-heading">${job.company}</h3>
                 <span class="tag-pill">${job.badge}</span>
               </div>
               <p class="text-base font-semibold text-[#1F6F68]">${job.role}</p>
             </div>
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold w-fit">
-              <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-500"></i>
-              ${job.period}
+            <div class="journey-entry__details">
+              <span>
+                <i data-lucide="calendar" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                ${job.period}
+              </span>
+              <span>
+                <i data-lucide="map-pin" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                ${job.location}
+              </span>
             </div>
           </div>
 
-          <div class="mt-6">
+          <div class="journey-entry__body mt-6">
             <p class="text-sm sm:text-base text-slate-700 font-medium mb-4">${job.summary}</p>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Key Responsibilities & Scope:</h4>
-            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-              ${job.responsibilities.map(r => `
-                <li class="flex items-start gap-2.5 text-sm text-slate-600">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#1F6F68] shrink-0 mt-2"></span>
-                  <span>${r}</span>
-                </li>
-              `).join('')}
-            </ul>
+            ${job.isEarlyCareer ? `
+              <div class="career-competencies" aria-label="Key competencies">
+                ${job.competencies.map(competency => `<span>${competency}</span>`).join('')}
+              </div>
+            ` : `
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Key Responsibilities & Scope:</h4>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                ${job.responsibilities.map(responsibility => `
+                  <li class="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#1F6F68] shrink-0 mt-2"></span>
+                    <span>${responsibility}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            `}
           </div>
-        </div>
+        </article>
       `).join('')}
     </div>
   `;
 }
 
-// 4. Render Career Impact & Proof Metrics
+// 4. Render Education & Professional Foundation
+function renderEducationFoundation() {
+  const { educationFoundation } = PORTFOLIO_DATA;
+  const container = document.getElementById('education-content');
+  if (!container || !educationFoundation) return;
+
+  const { education, systems } = educationFoundation;
+
+  container.innerHTML = `
+    <div class="education-panel">
+      <div class="section-intro education-intro max-w-3xl">
+        <span>${educationFoundation.eyebrow}</span>
+        <h2>${educationFoundation.headline}</h2>
+      </div>
+
+      <div class="education-grid">
+        <article class="education-column">
+          <span class="education-column__label">${education.label}</span>
+          <h3>${education.qualification}</h3>
+          <p>${education.institution}</p>
+          <div class="education-column__meta">
+            <span>${education.period}</span>
+            <span>${education.detail}</span>
+          </div>
+        </article>
+
+        <article class="education-column">
+          <span class="education-column__label">${systems.label}</span>
+          <div class="systems-list" aria-label="Professional systems">
+            ${systems.items.map(system => `<span>${system}</span>`).join('')}
+          </div>
+        </article>
+      </div>
+    </div>
+  `;
+}
+
+// 5. Render Career Impact & Proof Metrics
 function renderAchievements() {
   const { achievements } = PORTFOLIO_DATA;
   const container = document.getElementById('impact-content');
@@ -253,7 +308,7 @@ function renderAchievements() {
   `;
 }
 
-// 5. Render Selected Work (CAR initiatives)
+// 6. Render Selected Work (Editorial case studies)
 function renderSelectedWork() {
   const { selectedWork } = PORTFOLIO_DATA;
   const container = document.getElementById('work-content');
@@ -287,9 +342,11 @@ function renderSelectedWork() {
                   ${item.contribution.map(contribution => `<li>${contribution}</li>`).join('')}
                 </ul>
               </div>
-              <div class="case-study-detail case-study-outcome">
-                <span class="case-study-label">Outcome</span>
-                <p>${item.outcome}</p>
+              <div class="case-study-detail case-study-focus">
+                <span class="case-study-label">Focus</span>
+                <ul class="case-study-focus__list">
+                  ${item.focus.map(focus => `<li>${focus}</li>`).join('')}
+                </ul>
               </div>
             </div>
           </div>
@@ -313,7 +370,7 @@ function renderSelectedWork() {
   });
 }
 
-// 6. Render HR Journal by Azam (Editorial Teasers)
+// 7. Render HR Journal by Azam (Editorial Teasers)
 function renderHRJournal() {
   const { hrJournal } = PORTFOLIO_DATA;
   const container = document.getElementById('journal-content');
@@ -356,23 +413,21 @@ function renderHRJournal() {
   `;
 }
 
-// 7. Render Core Areas of Expertise
+// 8. Render Core Areas of Expertise
 function renderExpertise() {
   const { expertise } = PORTFOLIO_DATA;
   const container = document.getElementById('expertise-content');
   if (!container) return;
 
   container.innerHTML = `
-    <div class="expertise-grid grid grid-cols-1 md:grid-cols-2 gap-0">
+    <div class="expertise-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
       ${expertise.map(domain => `
         <div class="expertise-column p-6 sm:p-8">
-          <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+          <div class="flex items-start justify-between gap-4 mb-4 pb-3 border-b border-slate-100">
             <h3 class="text-lg font-bold text-slate-900 font-heading">${domain.domain}</h3>
-            <span class="text-xs font-semibold text-[#1F6F68] bg-[#DCEBE7] px-2.5 py-0.5 rounded-full">
-              ${domain.badge}
-            </span>
+            <span class="expertise-index">${domain.index}</span>
           </div>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <ul class="grid grid-cols-1 gap-3">
             ${domain.skills.map(skill => `
               <li class="flex items-center gap-2 text-sm text-slate-700 font-medium">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-[#1F6F68] shrink-0"></i>
@@ -386,7 +441,7 @@ function renderExpertise() {
   `;
 }
 
-// 8. Render Resume Section with Graceful Handling
+// 9. Render Resume Section with Graceful Handling
 function renderResumeSection() {
   const { resume } = PORTFOLIO_DATA;
   const container = document.getElementById('resume-content');
@@ -433,7 +488,7 @@ function renderResumeSection() {
   document.getElementById('view-resume-btn')?.addEventListener('click', openResumeSummaryModal);
 }
 
-// 9. Render Contact Section
+// 10. Render Contact Section
 function renderContactSection() {
   const { personal } = PORTFOLIO_DATA;
   const container = document.getElementById('contact-content');
@@ -574,10 +629,12 @@ function openCaseStudyModal(caseId) {
         </ul>
       </div>
 
-      <!-- Outcome -->
+      <!-- Focus -->
       <div class="bg-[#DCEBE7]/60 p-4 rounded-xl border border-[#1F6F68]/20">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] mb-1">Outcome & Contribution</h3>
-        <p class="text-sm text-slate-900 font-medium">${item.outcome}</p>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-[#1F6F68] mb-2">Focus Areas</h3>
+        <div class="modal-focus-list">
+          ${item.focus.map(focus => `<span>${focus}</span>`).join('')}
+        </div>
       </div>
     </div>
   `;
@@ -792,7 +849,7 @@ function initScrollSpy() {
 // Subtle, dependency-free reveal transitions with reduced-motion support.
 function initRevealAnimations() {
   const targets = document.querySelectorAll(
-    '.section-intro, .philosophy-panel, .journey-entry, .impact-item, .case-study-module, .journal-entry, .expertise-column, .resume-panel, .contact-panel'
+    '.section-intro, .philosophy-panel, .journey-entry, .education-column, .impact-item, .case-study-module, .journal-entry, .expertise-column, .resume-panel, .contact-panel'
   );
 
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
