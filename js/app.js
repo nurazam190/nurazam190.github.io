@@ -52,7 +52,7 @@ function refreshIcons() {
 
 // 1. Render Hero Section
 function renderHero() {
-  const { personal, hero } = PORTFOLIO_DATA;
+  const { personal, hero, resume } = PORTFOLIO_DATA;
   const container = document.getElementById('hero-content');
   if (!container) return;
 
@@ -103,11 +103,13 @@ function renderHero() {
             Connect on LinkedIn
             <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1.5 opacity-70"></i>
           </a>
-          <button id="hero-resume-btn" 
-                  class="inline-flex items-center justify-center px-4 py-3.5 rounded-xl font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
+          <a href="${resume.filePath}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center justify-center px-4 py-3.5 rounded-xl font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
             <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
             Resume
-          </button>
+          </a>
         </div>
 
         <!-- Compact Professional Snapshot -->
@@ -143,10 +145,6 @@ function renderHero() {
     </div>
   `;
 
-  document.getElementById('hero-resume-btn')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' });
-  });
 }
 
 // 2. Render Philosophy
@@ -255,7 +253,7 @@ function renderEducationFoundation() {
   const container = document.getElementById('education-content');
   if (!container || !educationFoundation) return;
 
-  const { education, systems } = educationFoundation;
+  const { education, systems, languages } = educationFoundation;
 
   container.innerHTML = `
     <div class="education-panel">
@@ -279,6 +277,10 @@ function renderEducationFoundation() {
           <span class="education-column__label">${systems.label}</span>
           <div class="systems-list" aria-label="Professional systems">
             ${systems.items.map(system => `<span>${system}</span>`).join('')}
+          </div>
+          <div class="languages-block">
+            <span class="education-column__label">${languages.label}</span>
+            <p>${languages.items.join(' • ')}</p>
           </div>
         </article>
       </div>
@@ -468,11 +470,13 @@ function renderResumeSection() {
         </div>
 
         <div class="lg:col-span-4 flex flex-col gap-3">
-          <button id="download-resume-btn" 
-                  class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-[#1F6F68] hover:bg-[#185A55] transition-all shadow-sm active:scale-[0.98]">
+          <a href="${resume.filePath}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-[#1F6F68] hover:bg-[#185A55] transition-all shadow-sm active:scale-[0.98]">
             <i data-lucide="download" class="w-4 h-4 mr-2"></i>
-            Download Resume (PDF)
-          </button>
+            View Resume
+          </a>
           <button id="view-resume-btn" 
                   class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-slate-800 bg-slate-50 border border-slate-200 hover:border-[#1F6F68] hover:text-[#1F6F68] transition-all active:scale-[0.98]">
             <i data-lucide="eye" class="w-4 h-4 mr-2"></i>
@@ -484,7 +488,6 @@ function renderResumeSection() {
     </div>
   `;
 
-  document.getElementById('download-resume-btn')?.addEventListener('click', handleResumeDownload);
   document.getElementById('view-resume-btn')?.addEventListener('click', openResumeSummaryModal);
 }
 
@@ -649,7 +652,7 @@ function openResumeSummaryModal() {
   const body = document.getElementById('modal-body');
   if (!modal || !body) return;
 
-  const { personal, careerJourney, achievements } = PORTFOLIO_DATA;
+  const { personal, careerJourney, achievements, resume } = PORTFOLIO_DATA;
 
   body.innerHTML = `
     <div class="space-y-6">
@@ -691,14 +694,12 @@ function openResumeSummaryModal() {
       </div>
 
       <div class="pt-2 flex justify-end">
-        <button id="modal-download-fallback" class="px-5 py-2.5 rounded-xl bg-[#1F6F68] text-white text-xs font-bold hover:bg-[#185A55] transition-colors">
-          Download PDF
-        </button>
+        <a href="${resume.filePath}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-[#1F6F68] text-white text-xs font-bold hover:bg-[#185A55] transition-colors">
+          View Resume PDF
+        </a>
       </div>
     </div>
   `;
-
-  document.getElementById('modal-download-fallback')?.addEventListener('click', handleResumeDownload);
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -710,25 +711,6 @@ function closeModal() {
   if (!modal) return;
   modal.classList.remove('open');
   document.body.style.overflow = '';
-}
-
-// Graceful Resume Download Handler
-function handleResumeDownload() {
-  fetch('assets/resume.pdf', { method: 'HEAD' })
-    .then(res => {
-      if (res.ok) {
-        window.open('assets/resume.pdf', '_blank');
-      } else {
-        showResumePlaceholderNotice();
-      }
-    })
-    .catch(() => {
-      showResumePlaceholderNotice();
-    });
-}
-
-function showResumePlaceholderNotice() {
-  showToast('📄 Resume PDF placeholder active. Complete on-page career summary is available below.');
 }
 
 // Contact directory copy actions reuse the shared toast feedback system.

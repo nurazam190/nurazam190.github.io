@@ -553,17 +553,20 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 .hero-copy a,
 .hero-copy button,
+.resume-panel a,
 .resume-panel button {
   border-radius: 2px !important;
 }
 
 .hero-copy a:first-child,
+.resume-panel a:first-child,
 .resume-panel button:first-child {
   background-color: var(--accent-primary) !important;
   box-shadow: none !important;
 }
 
 .hero-copy a:first-child:hover,
+.resume-panel a:first-child:hover,
 .resume-panel button:first-child:hover {
   background-color: var(--accent-hover) !important;
   transform: translateY(-2px);
@@ -1311,6 +1314,20 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .resume-panel {
   background-color: var(--cream) !important;
   border-left: 3px solid var(--sand) !important;
+}
+
+.languages-block {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.languages-block p {
+  margin-top: 0.65rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
 }
 
 .contact-panel {

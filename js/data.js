@@ -17,7 +17,7 @@ export const PORTFOLIO_DATA = {
       country: "Malaysia"
     },
     linkedinHeadline: "HR Executive @ ALPS Global Holding Berhad | Talent Acquisition | Employee Relations | HR Operations",
-    positioning: "HR Professional | Talent Acquisition | Employee Relations | HR Operations",
+    positioning: "HR Executive | Talent Acquisition | Employee Relations | HR Operations",
     brandPhilosophy: "A journey in HR shaped by people, experience, and continuous learning.",
     location: "Malaysia",
     portrait: "assets/images/portrait.jpg",
@@ -148,7 +148,11 @@ export const PORTFOLIO_DATA = {
     },
     systems: {
       label: "Professional Systems",
-      items: ["HR2000", "SAP", "Navision", "Microsoft Office"]
+      items: ["HR2000", "SAP", "Navision", "Microsoft Office", "Excel", "PowerPoint"]
+    },
+    languages: {
+      label: "Languages",
+      items: ["Malay", "English"]
     }
   },
 
@@ -179,7 +183,7 @@ export const PORTFOLIO_DATA = {
       metric: "04",
       title: "Full-Cycle Recruitment",
       subtitle: "Talent Acquisition",
-      description: "Handle end-to-end recruitment activities for ALPS Global Holding Berhad, including job posting, CV screening, interview coordination, and offer management to support efficient hiring turnaround."
+      description: "Managed end-to-end recruitment activities for ALPS Global Holding Berhad, including job posting, CV screening, interview coordination, offer management, and onboarding coordination. Closed 3 Finance vacancies within 1 month and filled a Senior HR Generalist position within 1 month."
     },
     {
       id: "exit-insights",
@@ -335,7 +339,7 @@ export const PORTFOLIO_DATA = {
   resume: {
     title: "Curriculum Vitae",
     subtitle: "Muhammad Nurazam — Human Resources Professional",
-    filePath: "assets/resume.pdf",
+    filePath: "assets/resume/Muhammad-Nurazam-Resume.pdf",
     highlights: [
       "Current HR Executive at ALPS Global Holding Berhad (100+ employees scope)",
       "Prior Sales Services and Human Resources experience at Tsubaki Power Transmission",
